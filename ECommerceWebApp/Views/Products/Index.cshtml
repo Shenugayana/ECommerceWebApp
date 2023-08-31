@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ECommerceWebApp.Models.Domain.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products";
     bool isAdmin = false;
     var id = Context.Session.GetInt32("userId");
     if (id == 1) { isAdmin = true; }

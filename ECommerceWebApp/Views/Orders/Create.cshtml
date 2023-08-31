@@ -1,32 +1,221 @@
 ﻿@model ECommerceWebApp.Models.Domain.Order
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Payment";
 }
 
-<h1>Create</h1>
-
-<h4>Order</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" asp-controller="OrderItems">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PaymentId" class="control-label"></label>
-                <select asp-for="PaymentId" name="method" class ="form-control" asp-items="ViewBag.PaymentId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<!--========== ALERT STARTS ==========-->
+<div id="shopify-section-1550734361962" class="shopify-section">
+    <div data-section-id="1550734361962" data-section-type="slide-v1" style=" ">
+        <div class="container slider-home-classic">
+            @if (TempData["successmsg"] != null)
+            {
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Well done!</strong> @TempData["successmsg"]
+                </div>
+            }
+            @if (TempData["errormsg"] != null)
+            {
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Oh snap!</strong> @TempData["errormsg"]
+                </div>
+            }
+        </div>
     </div>
 </div>
+<!--========== ALERT ENDS ==========-->
+<div id="shopify-section-cart-template" class="shopify-section">
+    <div class="page-width" data-section-id="cart-template" data-section-type="cart-template">
+        <div class="container container-240">
+            <div class="checkout">
+                <form asp-action="Create" asp-controller="OrderItems" class="form">
+                    <div>
+                        <legend>Address</legend>
+                        <div class="card">
+                            <address>
+                                @ViewBag.Address
+                            </address>
+                        </div>
+                    </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+                    <fieldset>
+                        <legend>Payment Method</legend>
+
+                        <div class="form__radios">
+                            @foreach (var payment in ViewBag.PaymentId)
+                            {
+                                <div class="form__radio">
+                                    <label class="form-check-label" for="payment_@payment.Value">
+                                        @payment.Text
+                                    </label>
+                                    <input class="form-check-input" type="radio" asp-for="PaymentId" value="@payment.Value" id="payment_@payment.Value" name="method">                                    
+                                </div>
+                            }
+                            @* @foreach (var payment in ViewBag.PaymentId)
+                            {
+                                <div class="form__radio">
+                                    <label asp-for="PaymentId">
+                                        @payment.Text
+                                    </label>
+                                    <input type="radio" name="method" asp-for="PaymentId" value="@payment.Value" id="payment_@payment.Value" name="PaymentId">
+                                </div>
+                            } *@
+                        </div>
+                    </fieldset>
+
+                    <div>
+                        <div class="text-center">
+                            <button class="delay03 relative btn-section" type="submit">
+                                Buy Now
+                            </button>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>            
+        </div>        
+    </div>    
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<style>
+
+
+button {
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  font-weight: 600;
+  margin-block-end: 0.5em;
+  padding: 0;
+}
+
+input {
+  border: 0;
+  color: inherit;
+  font: inherit;
+}
+
+input[type="radio"] {
+            accent-color: var(--engoc-primary-color);
+}
+
+table {
+  border-collapse: collapse;
+  inline-size: 100%;
+}
+
+tbody {
+  color: #b4b4b4;
+}
+
+td {
+  padding-block: 0.125em;
+}
+
+tfoot {
+  border-top: 1px solid #b4b4b4;
+  font-weight: 600;
+}
+
+.align {
+  display: grid;
+  place-items: center;
+}
+
+.button {
+  align-items: center;
+        background-color: var(--engoc-primary-color);
+  border-radius: 999em;
+  color: #fff;
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  padding-block: 0.75em;
+  padding-inline: 1em;
+  transition: 0.3s;
+}
+
+.button:focus,
+.button:hover {
+  background-color: #e96363;
+}
+
+.button--full {
+  inline-size: 100%;
+}
+
+.card {
+  border-radius: 1em;
+        background-color: var(--engoc-primary-color);
+  color: #fff;
+  padding: 1em;
+}
+
+.form {
+  display: grid;
+  gap: 2em;
+}
+
+.form__radios {
+  display: grid;
+  gap: 1em;
+}
+
+.form__radio {
+  align-items: center;
+  background-color: #fefdfe;
+  border-radius: 1em;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+  display: flex;
+  padding: 1em;
+}
+
+.form__radio label {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  gap: 1em;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding-block: 0.5em;
+  padding-inline: 1em;
+}
+
+.icon {
+  block-size: 1em;
+  display: inline-block;
+  fill: currentColor;
+  inline-size: 1em;
+  vertical-align: middle;
+}
+
+.iphone {
+  background-color: #fbf6f7;
+  background-image: linear-gradient(to bottom, #fbf6f7, #fff);
+  border-radius: 2em;
+  block-size: 812px;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+  inline-size: 375px;
+  overflow: auto;
+  padding: 2em;
+}
+</style>
