@@ -1,0 +1,146 @@
+﻿@model ECommerceWebApp.Models.Domain.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!--========== ALERT STARTS ==========-->
+<div id="shopify-section-1550734361962" class="shopify-section">
+    <div data-section-id="1550734361962" data-section-type="slide-v1" style=" ">
+        <div class="container slider-home-classic">
+            @if (TempData["errormsg"] != null)
+            {
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Oh snap!</strong> @TempData["errormsg"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!--========== ALERT ENDS ==========-->
+<div id="shopify-section-page-contactmap-template" class="shopify-section">
+    <div class="contact_page">
+        <div class="container e-contact  space_top_30">
+            <div class="row flex-center">
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    <form asp-action="Edit" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="info space_bot_20">
+                            <h3 class="space_bot_20 text-center">Edit Details</h3>
+                        </div>
+                        <div class="space_bot_30 col-sm-12 col-md-12 col-xs-12" style="display: flex; justify-content: center; align-items: center;">
+                            <div class="image-upload" id="fImageDiv">
+                                <img id="fImagePreview" src="@Model.Image" class="image-preview">
+                                <input asp-for="Image" type="file" id="fImage" name="file" class="image-input" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="login-form">
+                            <div class="form-group row ">
+                                <div class=" col-sm-6 col-md-6 col-xs-12">
+                                    <input asp-for="First_Name" class="form-control bdr" placeholder="First name" />
+                                    <span asp-validation-for="First_Name" class="text-danger"></span>
+                                </div>
+                                <div class=" col-sm-6 col-md-6 col-xs-12">
+                                    <input asp-for="Last_Name" class="form-control bdr" placeholder="Last name" />
+                                    <span asp-validation-for="Last_Name" class="text-danger"></span>
+                                </div>
+                                <div class=" col-sm-12 col-md-12 col-xs-12">
+                                    <input asp-for="Address" class="form-control bdr" placeholder="Address" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                                <div class=" col-sm-6 col-md-6 col-xs-12">
+                                    <input asp-for="Emailaddress" class="form-control bdr" placeholder="Email address" readonly/>
+                                    <span asp-validation-for="Emailaddress" class="text-danger"></span>
+                                </div>
+                                <div class=" col-sm-6 col-md-6 col-xs-12">
+                                    <input asp-for="Contact_Number" class="form-control bdr" placeholder="Contact Number" />
+                                    <span asp-validation-for="Contact_Number" class="text-danger"></span>
+                                </div>
+                                <div class=" col-sm-6 col-md-6 col-xs-12">
+                                    <input asp-for="Password" hidden/>
+                                </div>
+                                <div class="form-group text-center col-sm-12 col-md-12 col-xs-12">
+                                    <button type="submit" class="btn btn-submit"> Update </button>
+                                    <a class="btn btn-submit" asp-action="Index" asp-controller="Home" style="background: LightGray">Back to List</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://kit.fontawesome.com/06b50b7856.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const imageDivs = document.querySelectorAll(".image-upload");
+
+            imageDivs.forEach(div => {
+                const input = div.querySelector(".image-input");
+                const preview = div.querySelector(".image-preview");
+                const icon = div.querySelector(".image-icon");
+
+                div.addEventListener("click", function () {
+                    input.click();
+                });
+
+                input.addEventListener("change", function (event) {
+                    const file = input.files[0];
+
+                    if (file) {
+                        const reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            preview.src = e.target.result;
+                            icon.style.opacity = 0; // Hide the icon when an image is selected
+                        };
+
+                        reader.readAsDataURL(file);
+                    } else {
+                        preview.src = "placeholder.jpg";
+                        icon.style.opacity = 1; // Show the icon when no image is selected
+                    }
+                });
+            });
+        });
+
+
+    </script>
+}
+
+<style>
+    .image-upload {
+        position: relative;
+        display: inline-block;
+    }
+
+    .image-preview {
+        display: block;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+    }
+
+    .image-input {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+
+    .image-label {
+        display: block;
+        text-align: center;
+        margin-top: 5px;
+    }
+</style>

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<ECommerceWebApp.Models.Domain.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!--========== ALERT STARTS ==========-->
+<div id="shopify-section-1550734361962" class="shopify-section">
+    <div data-section-id="1550734361962" data-section-type="slide-v1" style=" ">
+        <div class="container slider-home-classic">
+            @if (TempData["successmsg"] != null)
+            {
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Well done!</strong> @TempData["successmsg"]
+                </div>
+            }
+            @if (TempData["errormsg"] != null)
+            {
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Oh snap!</strong> @TempData["errormsg"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!--========== ALERT ENDS ==========-->
+
+<div id="shopify-section-cart-template" class="shopify-section">
+    <div class="page-width" data-section-id="cart-template" data-section-type="cart-template">
+        <div class="container container-240">
+            <div class="checkout">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="shopping-cart bd-7">
+                            <div class="cmt-title text-center abs">
+                                <a class="page-title v2" asp-action="Create">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                                    </svg>
+                                    Add
+                                </a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table cart-table">
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="item_cart">
+                                                <td class="product-name flex align-center" data-title="Product">
+                                                    <a class="d-none d-md-block btn-del"> </a>
+                                                    <div class="product-img">
+                                                        <img src="@item.Image" alt="Takata lemnos clock">
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <a>@item.First_Name @item.Last_Name</a>
+                                                    </div>
+                                                    <a class="d-block d-md-none btn-del"> </a>
+                                                </td>
+                                                <td class="bcart-quantity single-product-detail" data-title="Quantity">
+                                                    <div class="single-product-info">
+                                                        <a>@item.Emailaddress</a>
+                                                    </div>
+                                                </td>
+                                                <td class="total-price" data-title="Price">
+                                                    <p class="price"> @item.Contact_Number </p>
+                                                </td>
+                                                <td class="product-name flex align-center">
+                                                    @if (item.Emailaddress == "info@minim.lk")
+                                                    {
+                                                        <a class="d-none d-md-block btn-del" asp-action="Edit" asp-route-id="@item.Id">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                                            </svg>
+                                                        </a>
+                                                    }                                                    
+                                                    <a class="d-none d-md-block btn-del" asp-action="Details" asp-route-id="@item.Id">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                                                            <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z" />
+                                                        </svg>
+                                                    </a>
+                                                    @if (item.Emailaddress != "info@minim.lk")
+                                                    {
+                                                        <a class="d-none d-md-block btn-del" asp-action="Delete" asp-route-id="@item.Id">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                                                            </svg>
+                                                        </a>
+                                                    }                                                    
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model ECommerceWebApp.Models.LoginViewModel
+<!--========== ALERT STARTS ==========-->
+<div id="shopify-section-1550734361962" class="shopify-section">
+    <div data-section-id="1550734361962" data-section-type="slide-v1" style=" ">
+        <div class="container slider-home-classic">
+            @if (TempData["successmsg"] != null)
+            {
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Well done!</strong> @TempData["successmsg"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!--========== ALERT ENDS ==========-->
+
+<div class="container">
+    <div class="myaccount">
+        <div class="row flex pd">
+            <div class="account-element bd-7 CustomerLoginForm">
+                <div class="cmt-title text-center abs">
+                    <h3 class="page-title v1">LOGIN</h3>
+                </div>
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="page-content">
+                        <p>Sign in to your account</p>
+                        <div class="login-form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"> email address <span class="f-red">*</span></label>
+                                <input asp-for="Emailaddress" class="form-control bdr" />
+                                <span asp-validation-for="Emailaddress" class="text-danger"></span>
+
+                                <label for="exampleInputPassword1">Password <span class="f-red">*</span></label>
+                                <input type="password" asp-for="Password" class="form-control bdr" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="flex lr">
+                                <input type="submit" value="Login" class="btn btn-submit btn-back" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="account-element e-left">
+                <div class="page-content">
+                    <p>Don't have an account? <strong>Create your very own account</strong></p>
+                    <div class="login-form">
+                        <div class="flex lr">
+                            <a asp-action="Create" class="btn btn-submit btn-back">
+                                REGISTER
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+﻿﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!--========== SLIDER STARTS ==========-->
+<div id="shopify-section-1550734361962" class="shopify-section">
+    <div data-section-id="1550734361962" data-section-type="slide-v1" style=" ">
+        <div class="container slider-home-classic margin_bottom_70">
+            <!--========== ALERT STARTS ==========-->
+            @if (TempData["successmsg"] != null)
+            {
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Well done!</strong> @TempData["successmsg"]
+                </div>
+            }
+            <!--========== ALERT ENDS ==========-->
+            <div class="js-slider-home-classic">
+                <!--slide 1-->
+                <div class="content-slider">
+                    <div class="relative">
+                        <img src="/image/bg-slide1-v1.webp" class="img-responsive img-bg-slider">
+                        <div class="btn-slider absolute">
+                            <a style="color:#3e976c; border-left:1px solid #3e976c; padding-left:20px;" class="delay03 fz-12 inline-block uppercase" href="/collections/all">Desk lamp<br> collection</a>
+                        </div>
+                        <div class="absolute text-slider  text-left ">
+                            <h1 class="text-animate-1  ">ROOF —</h1>
+                            <h1 class="text-animate-2 ">Modular</h1>
+                            <h1 class="text-animate-3 margin_bottom_30">Lighting</h1>
+                        </div>
+                    </div>
+                </div>
+                <!--slide 2-->
+                <div class="content-slider">
+                    <div class="relative">
+                        <img src="/image/bg-slide1-v2.webp" class="img-responsive img-bg-slider">
+                        <div class="btn-slider absolute">
+                            <a style="color:#d01749; border-left:1px solid #d01749; padding-left:20px;" class="delay03 fz-12 inline-block uppercase" href="/collections/all">Featured <br> Products</a>
+                        </div>
+                        <div class="absolute text-slider  text-left ">
+                            <h1 class="text-animate-1  "></h1>
+                            <h1 class="text-animate-2 ">Flamingo</h1>
+                            <h1 class="text-animate-3 margin_bottom_30">Lamp</h1>
+                        </div>
+                    </div>
+                </div>
+                <!--slide 3-->
+                <div class="content-slider">
+                    <div class="relative">
+                        <img src="/image/bg-slide1-v3.webp" class="img-responsive img-bg-slider">
+                        <div class="btn-slider absolute">
+                            <a style="color:#3e976c; border-left:1px solid #3e976c; padding-left:20px;" class="delay03 fz-12 inline-block uppercase" href="/collections/all">Desk lamp<br> collection</a>
+                        </div>
+                        <div class="absolute text-slider  text-left ">
+                            <h1 class="text-animate-1  ">Oma —</h1>
+                            <h1 class="text-animate-2 ">Circular</h1>
+                            <h1 class="text-animate-3 margin_bottom_30">Lamp</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--========== SLIDER ENDS ==========-->
+<!--========== PRODUCT STARTS ==========-->
+<div id="shopify-section-1552289919125" class="shopify-section">
+    <div data-section-id="1552289919125" data-section-type="slide-v1" style=" ">
+        <div class="ciloe-title-section margin_bottom_50 container relative text-center">
+            <h2 class="margin_bottom_20  fw-600">popular products</h2>
+        </div>
+        <div class="container margin_bottom_50 trending_classic">
+            <div class="row" id="fade-it-1">
+                <!--product-->
+                @foreach (var product in Model)
+                {
+                    <div class=" col-md-3 col-sm-4 col-xs-6 " id="fade-it-2">
+                        <div class="product margin_bottom_50 engoj_grid_parent relative">
+                            <div class="img-product relative">
+                                <a asp-controller="products" asp-action="Details" asp-route-id="@product.Id" class="engoj_find_img">
+                                    <img src="@product.FImage" class="img-responsive full-width">
+                                    <img src="@product.SImage" class="img-responsive absolute img-product-hover full-width">
+                                </a>
+                                <div class="product-icon text-center absolute">
+                                    <form asp-action="Create" asp-controller="Carts" asp-route-id="@product.Id" asp-route-returnUrl="@Context.Request.Path" class="inline-block icon-addcart margin_right_10 box-shadow">
+                                        <input type="hidden" id="qty" name="qty" value="1" />
+                                        <button type="submit" class="enj-add-to-cart-btn btn-default">
+                                            <i class="icon-bag"></i>
+                                        </button>
+                                    </form>
+                                    <a asp-controller="products" asp-action="Details" asp-route-id="@product.Id" class="icon-quickview inline-block box-shadow">
+                                        <i class="icon-magnifier"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="info-product text-center">
+                                <h4 class="des-font capital title-product space_top_bot_20">
+                                    <a asp-controller="products" asp-action="Details" asp-route-id="@product.Id">@product.Name</a>
+                                </h4>
+                                <p class="price-product">
+                                    <span class="price"><span class=money>$@product.Price.00</span></span>
+                                </p>
+                                <div class="product-rating space_top_10">
+                                    <span class="shopify-product-reviews-badge" data-id="2430652121193">
+                                        @for (int i = 0; i < product.Rating; i++)
+                                        {
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="orange" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                        }
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <!--product-->
+            </div>
+            <div class="text-center">
+                <a asp-controller="products" asp-action="index" class="delay03 relative btn-section">All Products</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--========== PRODUCT ENDS ==========-->
+<!--========== BANNER STARTS ==========-->
+<div id="shopify-section-1552289710450" class="shopify-section">
+    <div data-section-id="1552289710450" data-section-type="slide-v1" style=" ">
+        <div class="container banner_minimal margin_bottom_50 space_top_50 relative">
+            <div class=" flex">
+                <div class="relative content-banner">
+                    <a href="/collections/all" class="inline-block relative overlay-banner over-hidden">
+                        <img src="https://minim-demo.myshopify.com/cdn/shop/files/banner1-v1.jpg?v=1614309733" class="img-responsive hover-zoom-out">
+                    </a>
+                    <div class="absolute text-banner">
+                        <p class="lt-1 fw-600  text-center ">SALE UP TO 50%</p>
+                        <h1 class=" text-center  capital margin_bottom_10">arm chair</h1>
+                    </div>
+                </div>
+                <div class="relative content-banner">
+                    <a href="/collections/all" class="inline-block relative overlay-banner over-hidden">
+                        <img src="https://minim-demo.myshopify.com/cdn/shop/files/banner2-v1.jpg?v=1614309733" class="img-responsive hover-zoom-out">
+                    </a>
+                    <div class="absolute text-banner">
+                        <p class="lt-1 fw-600  text-center ">SPECIAL DEALS</p>
+                        <h1 class=" text-center  capital margin_bottom_10">dining table</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--========== BANNER ENDS ==========-->

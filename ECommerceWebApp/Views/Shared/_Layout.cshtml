@@ -1,0 +1,235 @@
+﻿﻿@{
+    bool isAdmin = false;
+    var id = Context.Session.GetInt32("userId");
+    if (id == 1) { isAdmin = true; }
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ECommerceApp</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/favicon.png?v=29885537522503330011552104986" type="image/png" />
+
+    @RenderSection("Scripts", required: false)
+
+    <!-- CSS ================================================== -->
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/timber.scss.css?v=29366364635065132141656106493" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/font-awesome.min.css?v=21869632697367095781549855455" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/simple-line-icons.css?v=49402511247700599821549855483" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/ionicons.min.css?v=184364306120675196201549855471" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/slick.css?v=72376615944862524581549855484" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/slick-theme.css?v=25113718316443114101549855483" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/owl.carousel.min.css?v=100847393044616809951549855479" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/owl.theme.default.min.css?v=160803198952872906341549855479" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/jquery.fancybox.min.css?v=55675584413537998841549855473" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/threesixty.css?v=6675712607238153051549855487" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/fonts.css?v=83811784241988132941549855456" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/style.css?v=99245712511931501371579249798" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/fix_style.css?v=13807369610403724911579166147" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/zoa-font.css?v=20367358950063266891549855489" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/flaticon.css?v=45077490328260288871549855455" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/themify-icons.css?v=17828378678609318721549855486" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/style-main.css?v=151714546133175732051582877383" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/style-more.css?v=162871148462548920311579234023" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/engo-customize.scss.css?v=176608224677204155161656106493" rel="stylesheet" type="text/css" media="all" />
+
+    <script id="shopify-features" type="application/json">{"accessToken":"56c581d1ab9ef7345b29c6154b1911c1","betas":["rich-media-storefront-analytics"],"domain":"minim-demo.myshopify.com","predictiveSearch":true,"shopId":8561000553,"smart_payment_buttons_url":"https:\/\/minim-demo.myshopify.com\/cdn\/shopifycloud\/payment-sheet\/assets\/latest\/spb.en.js","dynamic_checkout_cart_url":"https:\/\/minim-demo.myshopify.com\/cdn\/shopifycloud\/payment-sheet\/assets\/latest\/dynamic-checkout-cart.en.js","locale":"en","optimusEnabled":false,"optimusHidden":false,"betterDynamicCheckoutRecommendation":false}</script>
+    <script type="module">!function (o) { (o.Shopify = o.Shopify || {}).modules = !0 }(window);</script>
+    <script id="__st">var __st = { "a": 8561000553, "offset": -14400, "reqid": "e2e6b037-f667-4608-a8cc-feae970dc305", "pageurl": "minim-demo.myshopify.com\/", "u": "f09566f79301", "p": "home" };</script>
+    <!-- --font -->
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: {
+                families: [
+
+                    'Poppins:100,200,300,400,500,600,700,800,900',
+                    'Playfair Display:100,200,300,400,500,600,700,800,900',
+                    'Mr Dafoe:100,200,300,400,500,600,700,800,900'
+                ]
+            }
+        };
+        (function () {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+    <script integrity="sha256-atgy37M9Jn61+JKsuMFsbCkWlGMgmOcwfLDPeUl9V2s=" data-source-attribution="shopify.loadfeatures" defer="defer" src="https://minim-demo.myshopify.com/cdn/shopifycloud/shopify/assets/storefront/load_feature-6ad832dfb33d267eb5f892acb8c16c6c291694632098e7307cb0cf79497d576b.js" crossorigin="anonymous"></script>
+    <script integrity="sha256-h+g5mYiIAULyxidxudjy/2wpCz/3Rd1CbrDf4NudHa4=" data-source-attribution="shopify.dynamic-checkout" defer="defer" src="https://minim-demo.myshopify.com/cdn/shopifycloud/shopify/assets/storefront/features-87e8399988880142f2c62771b9d8f2ff6c290b3ff745dd426eb0dfe0db9d1dae.js" crossorigin="anonymous"></script>
+    <script integrity="sha256-V7lM7zdLAxLbwI5Iz1g1WLOqzMR1UKAIHMJLCMbKENY=" defer="defer" src="https://minim-demo.myshopify.com/cdn/shopifycloud/shopify/assets/storefront/bars/preview_bar_injector-57b94cef374b0312dbc08e48cf583558b3aaccc47550a0081cc24b08c6ca10d6.js" crossorigin="anonymous"></script>
+
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/jquery-1.12.0.min.js?v=180303338299147220221549855472" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shopifycloud/shopify/assets/themes_support/api.jquery-e94e010e92e659b566dbc436fdfe5242764380e00398907a14955ba301a4749f.js" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/modernizr-2.8.3.min.js?v=174727525422211915231549855478" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shopifycloud/shopify/assets/themes_support/option_selection-9f517843f664ad329c689020fb1e45d03cac979f64b9eb1651ea32858b0ff452.js" type="text/javascript"></script>
+
+    <script async src="https://api.revy.io/bundle.js" type="text/javascript"></script>
+    <link href="https://monorail-edge.shopifysvc.com" rel="dns-prefetch">
+</head>
+
+<body class="bg-body">
+    <div id="shopify-section-header" class="shopify-section index-section">
+        <header id="header" class="header-v2 delay05 fixed">
+            <div class="container">
+                <div class="row flex">
+                    <!--========== SEARCH BAR STARTS ==========-->
+                    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+                        <a href="#" class="delay03 inline-block hidden" id="btn-search">
+                            <i class="icon-magnifier fz-18"></i>
+                        </a>
+                        <form asp-controller="Products" asp-action="Index" class="searchform relative">
+                            <label class="sr-only">search</label>
+                            <input type="hidden" name="type" value="product">
+                            <input name="SearchString" type="text" autocomplete="off" placeholder="ENTER KEYWORDS..." aria-label="I&#39;m looking for..." />
+                            <button type="submit" class="submit absolute"><i class="icon-magnifier fz-16" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                    <!--========== SEARCH BAR ENDS ==========-->
+                    <!--========== CONTROLLERS NAV STARTS ==========-->
+                    <div class="col-lg-6 col-md-7 col-sm-4 col-xs-4 header-midle flex logo_header">
+                        <div class="flex center logo delay05">
+                            <a href="https://minim-demo.myshopify.com" class="left">
+                                <img alt=" Minim – Minimal &amp; Clean Furniture Store Shopify Theme" src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/logo.png?v=76281246793426370331550819075" width="118;" class="img-logo">
+                            </a>
+                        </div>
+                        <div class="hidden-sm hidden-xs flex center menu-header-v2">
+                            <ul class="nav navbar-nav menu-main">
+                                <li class="relative dropdown">
+                                    <a asp-controller="Home" asp-action="Index">Home</a>
+                                </li>
+                                <li class="relative dropdown">
+                                    <a asp-controller="Products" asp-action="Index">Products</a>
+                                </li>
+                                <li class="relative dropdown">
+                                    <a asp-controller="Categories" asp-action="Index">Categories</a>
+                                </li>
+                                @if (isAdmin)
+                                {
+                                    <li class="relative dropdown">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <!--========== CONTROLLERS NAV ENDS ==========-->
+                    <!--========== ICONS STARTS ==========-->
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 text-right icon-main">
+                        @if (Context.Session.GetString("userImg") != null)
+                        {
+                            <ul class="nav navbar-nav menu-main">
+                                <li class="relative dropdown">
+                                    <a asp-controller="Users" asp-action="Account" class="delay03 inline-block hidden-sm hidden-xs">
+                                        <img src="@Context.Session.GetString("userImg")" class="img-responsive" width="30" style="border-radius:50%">
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li> <a asp-controller="Users" asp-action="Account" class="delay03 capital"> Details </a> </li>
+                                        <li> <a asp-controller="Users" asp-action="Edit" class="delay03 capital"> Edit Details </a> </li>
+                                        <li> <a asp-controller="Orders" asp-action="Index" class="delay03 capital"> Orders </a> </li>
+                                        <li> <a asp-controller="Users" asp-action="Logout" class="delay03 capital"> Logout </a> </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav menu-main">
+                                <li class="relative dropdown">
+                                    <a asp-controller="Users" asp-action="Account" class="delay03 inline-block hidden-sm hidden-xs">
+                                        <img src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/iconlogin.png?v=17151735571898987051552621233" class="img-responsive">
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li> <a asp-controller="Users" asp-action="Login" class="delay03 capital"> Login </a> </li>
+                                        <li> <a asp-controller="Users" asp-action="Create" class="delay03 capital"> Register </a> </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+                        <ul class="nav navbar-nav menu-main">
+                            <li class="relative dropdown">
+                                <a asp-controller="Carts" asp-action="Index" class="delay03 relative inline-block text-center">
+                                    <img src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/iconcar.png?v=19912236354837126781552620850" class="img-responsive">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--========== ICONS ENDS ==========-->
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <!--angle up button-->
+    <div class="fixed scroll-top"> <a href="#" class="backtotop"> <i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+    <div class="overlay"></div>
+
+    <!--========== FOOTER STARTS ==========-->
+    <div id="shopify-section-footer" class="shopify-section index-section">
+        <footer>
+            <div class="footer-v3  container-1300 ">
+                <div class="container border-bot"> </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="copy_fv3 col-md-6 col-sm-6 col-xs-4">
+                            <p class="fz-12">Copyright © 2019 EngoTheme</p>
+                        </div>
+                        <div class="copy_fv3 col-md-6 col-sm-6 col-xs-8">
+                            <div class="menu-footer text-center space_bot_30 uppercase right space_top_30">
+                                <ul class="social flex">
+                                    <li class="space_right_10">
+                                        <a href="" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    </li>
+                                    <li class="space_right_10">
+                                        <a href="" target="_blank"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li class="space_right_10">
+                                        <a href="" target="_blank"><i class="fa fa-pinterest-p"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--========== FOOTER ENDS ==========-->
+
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/fastclick.js?v=180948248748138531451549855454" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/jquery.currencies.min.js?v=130900459728287867761549855473" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/timber.js?v=105042971690881028541579082279" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/handlebars.min.js?v=127319619962785791401549855460" type="text/javascript"></script>
+
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/ajax-cart.js?v=100898514001709344551549855528" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/bootstrap.min.js?v=73724390286584561281549855450" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/slick.js?v=134789227280932036561549855484" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/owl.carousel.min.js?v=75813715580695946121549855479" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/jquery.fancybox.min.js?v=78522239389571045111549855473" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/masonry.pkgd.min.js?v=159304155817357176911549855475" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/instafeed.min.js?v=90032470946696484961549855471" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/countdown.js?v=174878216071923293231549855453" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/jquery.counterup.min.js?v=72741712870112733821549962264" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/threesixty.min.js?v=28852475680982028401549855487" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/TimelineLite.min.js?v=42048888694529575801549855447" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/TweenMax.min.js?v=27540525881839043641549855447" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/jquery.superscrollorama.js?v=18040553548099191701549855473" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/function-scroll.js?v=46778163406334545241549855457" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/main.js?v=16252065884123715631582858565" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/engo-plugins.js?v=5333408240286433941549855453" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/quickview.js?v=113209095033172657521552644748" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/collection.js?v=173766977713674313801549855527" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/engo-scripts.js?v=11610719864608057671549855527" type="text/javascript"></script>
+    <script src="https://minim-demo.myshopify.com/cdn/shop/t/2/assets/engo-autocomplate.js?v=28882077903315741191579140873" type="text/javascript"></script>
+    <script type="text/javascript">Shopify.doNotTriggerClickOnThumb = false;</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿@model ECommerceWebApp.Models.Domain.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!--========== ALERT STARTS ==========-->
+<div id="shopify-section-1550734361962" class="shopify-section">
+    <div data-section-id="1550734361962" data-section-type="slide-v1" style=" ">
+        <div class="container slider-home-classic">
+            @if (TempData["errormsg"] != null)
+            {
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Oh snap!</strong> @TempData["errormsg"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!--========== ALERT ENDS ==========-->
+<div id="shopify-section-page-contactmap-template" class="shopify-section">
+    <div class="contact_page">
+        <div class="container e-contact  space_top_30">
+            <div class="row flex-center">
+                <div class="col-xs-12 col-sm-8 col-md-8">
+                    <div class="shopping-cart bd-7">
+                        <div class="cmt-title text-center abs">
+                            <h3 class="page-title v2"> Details</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-12 col-xs-12" style="display: flex; justify-content: center; align-items: center;">
+                                    <img src="@Model.Image" class="image-preview">
+                                </div>
+                                <div class="col-md-8 col-sm-12 col-xs-12">
+                                    <div class="form-group row ">
+                                        <div class=" col-sm-12 col-md-12 col-xs-12">
+                                            <label>First Name:</label> @Model.First_Name
+                                        </div>
+                                        <div class=" col-sm-12 col-md-12 col-xs-12">
+                                            <label>Last Name:</label> @Model.Last_Name
+                                        </div>
+                                        <div class=" col-sm-12 col-md-12 col-xs-12">
+                                            <label>Address:</label> @Model.Address
+                                        </div>
+                                        <div class=" col-sm-12 col-md-12 col-xs-12">
+                                            <label>Email address:</label> @Model.Emailaddress
+                                        </div>
+                                        <div class=" col-sm-12 col-md-12 col-xs-12">
+                                            <label>Contact number:</label> @Model.Contact_Number
+                                        </div>
+                                        <div class=" col-sm-12 col-md-12 col-xs-12">
+                                            <label>Joinded Date:</label> @Model.Date_of_Join
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form asp-action="Delete">
+                            <div class="table-cart-bottom">
+                                <input type="hidden" asp-for="Id" />
+                                <a asp-action="Index" class="btn btn-update">Back to List</a>
+                                <input type="submit" class="btn btn-update" value="Delete">
+                            </div>                            
+                        </form>                        
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://kit.fontawesome.com/06b50b7856.js" crossorigin="anonymous"></script>
+}
+
+<style>
+    .image-preview {
+        display: block;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 15%;
+        border: 2px solid #ccc;
+    }
+</style>

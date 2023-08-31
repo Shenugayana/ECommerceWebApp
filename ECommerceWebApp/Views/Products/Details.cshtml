@@ -1,0 +1,117 @@
+﻿@model ECommerceWebApp.Models.Domain.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+<!--========== ALERT STARTS ==========-->
+<div id="shopify-section-1550734361962" class="shopify-section">
+    <div data-section-id="1550734361962" data-section-type="slide-v1" style=" ">
+        <div class="container slider-home-classic">
+            @if (TempData["successmsg"] != null)
+            {
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Well done!</strong> @TempData["successmsg"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!--========== ALERT ENDS ==========-->
+
+<div id="shopify-section-product-template" class="shopify-section">
+    <div class="space_top_50 engoj-bundle-product" style="background:#f9f9f9">
+        <div class="container ">
+            <div class="single-product-detail product-bundle product-aff">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="flex product-img-slide">
+                            <div class="product-images">
+                                <div class="main-img js-product-slider">
+                                    <a href="#" onClick="return false;" class="effect"><img src="@Model.FImage" class="engoj_img_main img-responsive full-width"></a>
+                                    <a href="#" onClick="return false;" class="effect"><img src="@Model.SImage" class="engoj_img_main img-responsive full-width"></a>
+                                    <a href="#" onClick="return false;" class="effect"><img src="@Model.TImage" class="engoj_img_main img-responsive full-width"></a>
+                                </div>
+                            </div>
+                            <div class="multiple-img-list-ver2 js-click-product">
+                                <div class="product-col">
+                                    <div class="engoj_img_variant img">
+                                        <img src="@Model.FImage" class="img-reponsive">
+                                    </div>
+                                </div>
+                                <div class="product-col">
+                                    <div class="engoj_img_variant img">
+                                        <img src="@Model.SImage" class="img-reponsive">
+                                    </div>
+                                </div>
+                                <div class="product-col">
+                                    <div class="engoj_img_variant img">
+                                        <img src="@Model.TImage" class="img-reponsive">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="single-flex">
+                            <div class="single-product-info product-info product-grid-v2 s-50">
+                                <h3 class="product-title"><a>@Model.Name</a></h3>
+                                <div class="flex">
+                                    <div class="product-price enj-product-price column-60">
+                                        <link itemprop="availability" href="http://schema.org/InStock">
+                                        <span class="price engoj_price_main"><span class=money>$@Model.Price.00</span></span>
+                                    </div>
+                                    <div class="product-rating column-40">
+                                        <span class="shopify-product-reviews-badge" data-id="2426727989353"></span>
+                                    </div>
+                                </div>
+                                <div class="product-description">
+                                    <span>@Model.Description</span>
+                                </div>
+                                <div class="single-product-button-group">                                    
+                                        @if(Model.Stock > 0)
+                                        {
+                                            <form asp-action="Create" asp-controller="Carts" asp-route-id="@Model.Id" asp-route-returnUrl="@Context.Request.Path" method="post" class="product-form product-form-product-template product-form--hide-variant-labels">
+                                                <div class="e-btn cart-qtt">
+                                                    <div class="product-form__item product-form__item--quantity e-quantity">
+                                                        <input type="number" id="qty" name="qty" value="1" min="1" max="@Model.Stock" class="product-form__input" pattern="[0-9]*">
+                                                    </div>
+                                                    <div class="product-form__item product-form__item--submit">
+                                                        <button type="submit" class="btn-add-cart">
+                                                            <span id="AddToCartText-product-template">
+                                                                Add To Cart
+                                                            </span>
+                                                            <p class="icon-bg icon-cart v2"></p>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form class="product-form product-form-product-template product-form--hide-variant-labels">                
+                                                <select name="id" id="productSelect" class="engoj-except-select2 product-single__variants">
+                                                    <option disabled="disabled">
+                                                        Default Title - Sold Out
+                                                    </option>                                                
+                                                </select>
+                                                <div class="e-btn cart-qtt">
+                                                    <div class="product-form__item product-form__item--submit">
+                                                        <button type="submit" name="add" id="AddToCart" disabled="disabled" class="btn-add-cart btn-outofstock product-form__cart-submit--small">                                                            
+                                                            <span id="AddToCartText-product-template">
+                                                                Sold Out                                                            
+                                                            </span>                                                        
+                                                        </button>                                                    
+                                                    </div>                                                
+                                                </div>
+                                            </form>
+                                        }                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

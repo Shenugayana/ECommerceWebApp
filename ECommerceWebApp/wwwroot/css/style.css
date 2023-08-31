@@ -1,0 +1,313 @@
+﻿:root {
+    --engoc-primary-color: #3e976c;
+    --engoc-color-main1: #000000;
+    --engoc-color-main2: #bdefd7;
+    --engoc-color-main3: #3f976d;
+    --engoc-color-main4: #bdefd6;
+    --engoc-primary-font: Poppins;
+}
+
+@media (min-width:1025px) {
+    .slider-home-classic {
+        padding-top: 220px;
+    }
+}
+
+.slider-home-classic .text-slider h1 {
+    color: #3d3d3d;
+}
+
+.slider-home-classic .text-slider .line_slider {
+    height: 60px;
+    width: 1px;
+    background: #8c8f9e;
+    margin: 0 auto;
+    transform: translateY(-85px);
+    transition: all 1s ease;
+}
+
+@media (max-width: 1400px) {
+    .slider-home-classic .text-slider .line_slider {
+        height: 30px;
+    }
+}
+
+.slider-home-classic .slick-current.slick-active .text-slider .line_slider {
+    transform: translateY(0);
+}
+
+
+.btn-ciloe {
+    background:
+}
+
+    .btn-ciloe:hover {
+        background:
+    }
+
+.js-slider-home-classic .slick-next {
+    display: none !important;
+}
+
+.js-slider-home-classic .slick-prev {
+    display: none !important;
+}
+
+.js-slider-home-classic .slick-prev {
+    left: 15px;
+}
+
+@media (max-width: 768px) {
+    .trending_classic .col-sm-4:nth-child(3n+1) {
+        clear: inherit;
+    }
+
+    .trending_classic .col-xs-6:nth-child(2n+1) {
+        clear: left;
+    }
+}
+
+@media (max-width: 1024px) {
+    .col-md-3:nth-child(4n+1) {
+        clear: none;
+    }
+}
+
+.banner_minimal .content-banner .overlay-banner:hover img {
+    overflow: hidden;
+    transition: all 2s ease;
+    transform: scale(1.05);
+}
+
+.banner_minimal .content-banner .overlay-banner:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.7);
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.banner_minimal .text-banner {
+    top: 21%;
+    left: 10%;
+    right: 10%;
+}
+
+    .banner_minimal .text-banner h1 {
+        text-transform: inherit;
+        font-size: 48px;
+        color: #3c3c3c;
+    }
+
+    .banner_minimal .text-banner p {
+        margin-bottom: 25px;
+        font-size: 12px;
+        color: #cfcfcf;
+    }
+
+    .banner_minimal .text-banner .line {
+        border-bottom: 1px solid #cfcfcf;
+        width: 80px;
+    }
+
+    .banner_minimal .text-banner a {
+        color: #cfcfcf;
+    }
+
+.banner_minimal .content-banner .text-banner .ciloe-btn-default-2:before {
+    background: #cfcfcf;
+}
+
+.banner_minimal .text-banner a:hover {
+    color:;
+}
+
+.banner_minimal .content-banner:hover .text-banner p {
+    animation: text-translate 1s ease;
+    -webkit-animation: text-translate 1s ease;
+}
+
+.banner_minimal .content-banner:hover .text-banner h1, .banner .content-banner:hover .text-banner p.line {
+    animation: text-translate2 1s ease;
+    -webkit-animation: text-translate2 1s ease;
+}
+
+.banner_minimal .content-banner:hover .text-banner .ciloe-btn-default-2 {
+    animation: text-translate3 1.2s ease;
+    -webkit-animation: text-translate3 1.2s ease;
+}
+
+.banner_minimal .content-banner .text-banner .ciloe-btn-default-2:hover::before {
+    background:;
+}
+
+@media (max-width:567px) {
+    .banner_minimal .content-banner {
+        padding-bottom: 15px;
+    }
+}
+
+@media (max-width:567px) {
+    .banner_minimal .text-banner h1 {
+        font-size: 24px;
+    }
+
+    .banner_minimal .flex {
+        flex-direction: column;
+    }
+
+        .banner_minimal .flex .content-banner {
+            padding-bottom: 20px;
+        }
+}
+
+.single-product-detail .single-product-info .action .quantity {
+    float: initial;
+}
+
+.tab-pd-v3 .title-tab-3 li:first-child a {
+    padding-left: 0;
+}
+
+.variant-image-group.engoj_select_color {
+    display: none;
+}
+
+.tab-nav {
+    background: #f9f9f9;
+}
+
+.btn-loadmore .btn-ciloe {
+    text-transform: capitalize;
+    padding: 12px 24px;
+    letter-spacing: 0px;
+    transition: .3s;
+    font-size: 13px;
+}
+
+    .btn-loadmore .btn-ciloe img {
+        transition: .3s;
+        opacity: 0.6;
+    }
+
+        .btn-loadmore .btn-ciloe img:hover {
+            opacity: 1;
+        }
+
+.btn-loadmore {
+    width: 100%;
+}
+
+.tab-pd-v3 {
+    background: #f3f3f3;
+}
+
+    .tab-pd-v3 .title-tab-3 {
+        align-items: baseline;
+        border-bottom: 0;
+        margin-bottom: 5px;
+        margin-top: 15px;
+    }
+
+.tab-content > .tab-pane.active {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex !important;
+    flex-wrap: wrap;
+}
+
+.tab-pd-v3 .title-tab-3 li a {
+    opacity: 0.7;
+    padding-bottom: 20px;
+    position: relative;
+    background: transparent;
+    border: 0;
+    transition: 0s;
+    color: #999999;
+}
+
+    .tab-pd-v3 .title-tab-3 li a:hover {
+        opacity: 1;
+        border: 0;
+        border-radius: 0;
+        color: #3e976c;
+    }
+
+        .tab-pd-v3 .title-tab-3 li a:hover::before {
+            left: 15px;
+            right: 15px;
+        }
+
+.tab-pd-v3 .title-tab-3 li.active a {
+    opacity: 1;
+    color: #3e976c;
+}
+
+    .tab-pd-v3 .title-tab-3 li.active a:before {
+        left: 15px;
+        right: 15px;
+    }
+
+    .tab-pd-v3 .title-tab-3 li.active a:hover, .tab-pd-v3 .title-tab-3 li.active a:focus {
+        background: transparent;
+    }
+
+.tab-pd-v3 .product {
+    margin-bottom: 0;
+}
+
+.tab-pd-v3 .product-tab-pd {
+    padding: 0;
+    border-bottom: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    transition: .3s;
+}
+
+.tab-pd-v3 .product .info-product {
+    padding-bottom: 20px;
+    border-top: 1px solid #e4e4e4;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+    .tab-pd-v3 .col-xs-6:nth-child(2n+2) {
+        border-right: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .tab-pd-v3 .col-sm-4:nth-child(3n+1) {
+        clear: none;
+    }
+
+    @media (min-width: 992px) {
+        .tab-pd-v3 .col-md-3:nth-child(4n+1) {
+            clear: none;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .tab-pd-v3 {
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .product-col-5:nth-child(5n+5) {
+            border-right: 1px solid transparent;
+        }
+    }
+
+
+
+    .tab-pd-v3 .product-tab-pd:hover {
+        box-shadow: 0 10px 60px 0 rgba(0, 0, 0, 0.07);
+        z-index: 9;
+    }
