@@ -7,6 +7,8 @@ Welcome to ECommerceWebApp, an ASP.NET Core MVC application for managing an e-co
 - [Overview](#overview)
 - [Features](#features)
 - [Usage](#usage)
+- [Setup](#Setup)
+- [Technologies Used](#Technologies-Used)
 
 ## Overview
 
@@ -30,3 +32,23 @@ ECommerceWebApp is a web application built using ASP.NET Core MVC. It allows use
 - Place orders for selected products.
 - Admin users can manage users and perform administrative tasks from the admin panel.
 - Update your account details and view your order history.
+
+## Setup
+
+1. Clone this repository to your local machine.
+2. Install the required dependencies using NuGet Package Manager.
+3. Configure the database connection in the `appsettings.json` file by updating the `ConnectionStrings` section.
+4. Run database migrations to create the database schema: `dotnet ef database update`.
+5. Build and run the application: `dotnet run`.
+
+## Technologies Used
+
+- ASP.NET Core MVC: Handling web requests and rendering views.
+- Entity Framework Core: Managing the database schema and data access.
+- Razor Pages: Creating dynamic web pages with server-side rendering.
+- Bootstrap: Styling the user interface for responsiveness.
+- Session Management: Managing user sessions and cart contents.
+- File Uploads: Uploading and managing product images.
+- Role-Based Authorization: Implementing access control for different user roles.
+
+Happy coding!
