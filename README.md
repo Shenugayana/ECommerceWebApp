@@ -2,6 +2,10 @@
 
 Welcome to ECommerceWebApp, an ASP.NET Core MVC application for managing an e-commerce platform. This repository contains the source code and configuration files for the application.
 
+## Authors
+
+- [@shenugayana](https://www.github.com/shenugayana)
+
 ## Table of Contents
 
 - [Overview](#overview)
